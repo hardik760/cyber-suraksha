@@ -1,0 +1,21 @@
+{
+  "name": "cyber-suraksha",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://x-access-token:ghs_CZuuU1LR3k2w8Ynd6pxNxKmcBlD8xV3ATw6w@github.com/hardik760/cyber-suraksha.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hardik760/cyber-suraksha/issues"
+  },
+  "homepage": "https://github.com/hardik760/cyber-suraksha#readme"
+}
