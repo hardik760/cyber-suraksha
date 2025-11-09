@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/hardik760/cyber-suraksha#readme",
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
