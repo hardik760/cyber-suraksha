@@ -1,0 +1,23 @@
+import './globals.css'
+import type { Metadata } from 'next'
+import ChatWidget from '@/components/chat/ChatWidget'
+
+export const metadata: Metadata = {
+  title: 'Cyber-Suraksha OPS',
+  description: 'AI-Powered Cyber Defence Simulator for MSMEs',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <ChatWidget />
+      </body>
+    </html>
+  )
+}
