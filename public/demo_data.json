@@ -1,0 +1,235 @@
+{
+  "chat_responses": {
+    "phishing": "Phishing is a cyberattack where attackers impersonate legitimate organizations to steal sensitive information like passwords, credit cards, or personal data. Common signs include urgent language, suspicious sender addresses, unexpected attachments, and requests for credentials. Always verify sender authenticity and never click suspicious links.",
+    "ransomware": "Ransomware is malware that encrypts your files and demands payment for decryption. Prevention is key: maintain regular backups, keep systems patched, use anti-malware software, and train employees to recognize suspicious emails. If infected, isolate the system immediately and restore from clean backups - never pay the ransom.",
+    "vendor": "I can see you have a vendor breach alert. This means a third-party provider has been compromised, potentially exposing your data. Immediate actions: 1) Revoke compromised credentials, 2) Rotate all affected keys, 3) Audit access logs, 4) Contact the vendor, 5) Add MFA requirements to contracts. Would you like me to guide you through the remediation workflow?",
+    "weak_password": "Weak passwords are a major security risk. Use passwords with at least 16 characters combining uppercase, lowercase, numbers, and special characters. Even better, use passphrases like 'Correct-Horse-Battery-Staple-89'. Enable 2FA wherever possible. Use a password manager to generate and store unique passwords for each account.",
+    "2fa": "Two-factor authentication (2FA) adds an extra security layer by requiring two forms of verification: something you know (password) and something you have (phone, security key). Enable 2FA on all critical accounts, especially email, banking, and admin panels. Use authenticator apps (like the one in this simulator) instead of SMS when possible.",
+    "default": "I'm your AI security assistant. I can help you understand cyber threats, guide you through simulations, explain remediation steps, and answer questions about your security posture. What would you like to know?"
+  },
+  "url_checks": {
+    "http://evil-phishing-site.com": {
+      "safe": false,
+      "risk_score": 95,
+      "reasons": ["Known phishing domain", "SSL certificate mismatch", "Reported by 15 users"],
+      "block_recommended": true,
+      "threats": ["phishing", "credential_theft"],
+      "scanned_at": "2025-01-09T10:30:00Z"
+    },
+    "http://malware-download.net": {
+      "safe": false,
+      "risk_score": 98,
+      "reasons": ["Active malware distribution", "Blacklisted by VirusTotal", "Command & control server"],
+      "block_recommended": true,
+      "threats": ["malware", "trojan", "ransomware"],
+      "scanned_at": "2025-01-09T10:30:00Z"
+    },
+    "https://suspicious-bank-login.com": {
+      "safe": false,
+      "risk_score": 88,
+      "reasons": ["Typosquatting detected", "New domain (registered 2 days ago)", "No HTTPS history"],
+      "block_recommended": true,
+      "threats": ["phishing", "credential_theft"],
+      "scanned_at": "2025-01-09T10:30:00Z"
+    },
+    "https://google.com": {
+      "safe": true,
+      "risk_score": 0,
+      "reasons": ["Verified domain", "Valid SSL certificate", "Trusted by millions"],
+      "block_recommended": false,
+      "threats": [],
+      "scanned_at": "2025-01-09T10:30:00Z"
+    },
+    "https://github.com": {
+      "safe": true,
+      "risk_score": 0,
+      "reasons": ["Legitimate service", "Secure connection", "No reported threats"],
+      "block_recommended": false,
+      "threats": [],
+      "scanned_at": "2025-01-09T10:30:00Z"
+    }
+  },
+  "email_analysis": {
+    "urgent_ceo_request": {
+      "is_phishing": true,
+      "confidence": 0.95,
+      "indicators": ["urgency_language", "authority_impersonation", "external_sender", "unusual_request"],
+      "explanation": "Classic CEO fraud attack - external sender impersonating authority figure with urgent financial request. The email uses pressure tactics ('urgent', 'immediately') and requests wire transfer to unusual account."
+    },
+    "password_reset": {
+      "is_phishing": true,
+      "confidence": 0.88,
+      "indicators": ["suspicious_link", "domain_typosquatting", "generic_greeting"],
+      "explanation": "Phishing attempt using fake password reset. The sender domain 'paypa1.com' is typosquatting 'paypal.com'. Link leads to credential harvesting page."
+    },
+    "invoice_attachment": {
+      "is_phishing": true,
+      "confidence": 0.82,
+      "indicators": ["unexpected_attachment", "external_sender", "urgency_language"],
+      "explanation": "Likely malware delivery via fake invoice. Attachment may contain ransomware or trojan. Sender is external and uses urgent language to bypass scrutiny."
+    },
+    "legitimate_newsletter": {
+      "is_phishing": false,
+      "confidence": 0.92,
+      "indicators": [],
+      "explanation": "Legitimate marketing email from verified sender. Domain matches company records, contains unsubscribe link, and uses standard newsletter format."
+    }
+  },
+  "simulation_results": {
+    "phishing_attack": {
+      "simulation_id": "sim_phishing_001",
+      "infected_nodes": ["employee_1", "email_server", "database"],
+      "time_to_spread": 45,
+      "score_impact": -25,
+      "bpi_change": 15,
+      "events": [
+        {"timestamp": 0, "node_id": "employee_1", "event_type": "initial_compromise", "description": "Phishing email opened, credentials entered"},
+        {"timestamp": 1500, "node_id": "employee_1", "event_type": "infection", "description": "Workstation compromised"},
+        {"timestamp": 3000, "node_id": "email_server", "event_type": "lateral_movement", "description": "Stolen credentials used to access email server"},
+        {"timestamp": 4500, "node_id": "email_server", "event_type": "infection", "description": "Email server compromised"},
+        {"timestamp": 6000, "node_id": "database", "event_type": "data_exfiltration", "description": "Customer database accessed"}
+      ]
+    },
+    "weak_password_attack": {
+      "simulation_id": "sim_weakpass_001",
+      "infected_nodes": ["employee_2", "auth_system", "file_server"],
+      "time_to_spread": 30,
+      "score_impact": -20,
+      "bpi_change": 12,
+      "events": [
+        {"timestamp": 0, "node_id": "employee_2", "event_type": "brute_force", "description": "Weak password cracked in 2 minutes"},
+        {"timestamp": 1000, "node_id": "employee_2", "event_type": "infection", "description": "Account compromised"},
+        {"timestamp": 2500, "node_id": "auth_system", "event_type": "privilege_escalation", "description": "Admin credentials obtained"},
+        {"timestamp": 4000, "node_id": "file_server", "event_type": "data_access", "description": "Sensitive files accessed"}
+      ]
+    },
+    "ransomware_attack": {
+      "simulation_id": "sim_ransomware_001",
+      "infected_nodes": ["employee_1", "file_server", "cloud_storage"],
+      "time_to_spread": 60,
+      "score_impact": -40,
+      "bpi_change": 30,
+      "events": [
+        {"timestamp": 0, "node_id": "employee_1", "event_type": "infection", "description": "Ransomware payload executed"},
+        {"timestamp": 5000, "node_id": "employee_1", "event_type": "encryption", "description": "Local files encrypted (1247 files)"},
+        {"timestamp": 10000, "node_id": "file_server", "event_type": "lateral_movement", "description": "Spreading to network shares"},
+        {"timestamp": 15000, "node_id": "file_server", "event_type": "encryption", "description": "Server files encrypted"},
+        {"timestamp": 20000, "node_id": "cloud_storage", "event_type": "encryption", "description": "Cloud backups targeted"}
+      ]
+    },
+    "vendor_breach": {
+      "simulation_id": "sim_vendor_001",
+      "infected_nodes": ["vendor_portal", "database", "cloud_storage"],
+      "time_to_spread": 90,
+      "score_impact": -30,
+      "bpi_change": 25,
+      "events": [
+        {"timestamp": 0, "node_id": "vendor_portal", "event_type": "initial_compromise", "description": "Vendor credentials leaked on dark web"},
+        {"timestamp": 3000, "node_id": "vendor_portal", "event_type": "unauthorized_access", "description": "Attacker logs in using stolen credentials"},
+        {"timestamp": 6000, "node_id": "database", "event_type": "lateral_movement", "description": "Vendor API keys used to access database"},
+        {"timestamp": 9000, "node_id": "cloud_storage", "event_type": "data_exfiltration", "description": "Backup data accessed"}
+      ]
+    }
+  },
+  "cyber_health_score": {
+    "overall_score": 78,
+    "max_score": 100,
+    "grade": "B",
+    "bpi": 23,
+    "categories": {
+      "patch_management": {
+        "score": 17,
+        "max": 20,
+        "percentage": 85,
+        "status": "good",
+        "details": "85% of systems patched within 30 days"
+      },
+      "password_security": {
+        "score": 14,
+        "max": 20,
+        "percentage": 70,
+        "status": "needs_improvement",
+        "details": "28% of accounts using weak passwords"
+      },
+      "backup_strategy": {
+        "score": 14,
+        "max": 15,
+        "percentage": 93,
+        "status": "excellent",
+        "details": "Daily automated backups with 30-day retention"
+      },
+      "email_security": {
+        "score": 12,
+        "max": 15,
+        "percentage": 80,
+        "status": "good",
+        "details": "SPF and DKIM configured, DMARC pending"
+      },
+      "monitoring": {
+        "score": 8,
+        "max": 10,
+        "percentage": 80,
+        "status": "good",
+        "details": "Real-time threat monitoring active"
+      },
+      "incident_response": {
+        "score": 7,
+        "max": 10,
+        "percentage": 70,
+        "status": "needs_improvement",
+        "details": "Incident response plan exists but not tested"
+      },
+      "vendor_risk": {
+        "score": 6,
+        "max": 10,
+        "percentage": 60,
+        "status": "needs_improvement",
+        "details": "3 vendors lack security assessments"
+      }
+    }
+  },
+  "alerts": [
+    {
+      "id": "alert_001",
+      "timestamp": "2025-01-09T10:25:33Z",
+      "severity": "high",
+      "category": "phishing",
+      "title": "Phishing email detected and blocked",
+      "description": "Email from 'admin@paypa1.com' contained phishing indicators",
+      "affected_user": "demo@cyber-suraksha.test",
+      "status": "blocked"
+    },
+    {
+      "id": "alert_002",
+      "timestamp": "2025-01-09T09:15:22Z",
+      "severity": "medium",
+      "category": "weak_password",
+      "title": "Weak password detected",
+      "description": "Account using password with entropy < 40 bits",
+      "affected_user": "marketing@company.com",
+      "status": "pending_action"
+    },
+    {
+      "id": "alert_003",
+      "timestamp": "2025-01-09T08:45:10Z",
+      "severity": "critical",
+      "category": "vendor_breach",
+      "title": "Vendor credentials compromised",
+      "description": "AWS credentials found in public GitHub repository",
+      "affected_systems": ["cloud_storage", "database"],
+      "status": "investigation"
+    }
+  ],
+  "activity_summary": {
+    "period": "last_30_days",
+    "total_sites_scanned": 1247,
+    "risky_sites_blocked": 23,
+    "safe_sites": 1224,
+    "phishing_emails_detected": 8,
+    "ransomware_simulations_run": 2,
+    "vendor_breaches_simulated": 1,
+    "issues_resolved": 15,
+    "password_rotations": 7,
+    "cyber_health_score_change": 12
+  }
+}
